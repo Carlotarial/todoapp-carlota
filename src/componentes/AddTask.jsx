@@ -7,10 +7,10 @@ function AddTask({ onAddTask }) {
     e.preventDefault();
 
     const trimmed = text.trim();
-    if (!trimmed) return; // No crear tareas vacías
+    if (!trimmed) return;
 
-    onAddTask(trimmed); // Aviso al padre (App)
-    setText(""); // Vaciar input
+    onAddTask(trimmed);
+    setText("");
   };
 
   return (
