@@ -222,3 +222,30 @@ button:active {
   margin-top: 1rem;
   font-size: 0.9rem;
 }
+
+.task-separator {
+  margin: 0.4rem 0 0.2rem;
+  padding-top: 0.3rem;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #b37a99;
+  opacity: 0.9;
+  border-top: 1px dashed #ffd2e7;
+}
+
+.bulk-actions-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+
+.bulk-actions-bottom button {
+  background: #ffb3d4;
+  border: 1px solid #ff9cc6;
+  box-shadow: 0 2px 6px rgba(255, 150, 200, 0.4);
+}
+
+.bulk-actions-bottom button:hover {
+  background: #ff9ec7;
+}

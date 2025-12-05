@@ -27,17 +27,34 @@ function App() {
   }, [tasks]);
 
   const handleAddTask = (text) => {
-    setTasks([...tasks, { id: Date.now(), text, completed: false }]);
+    setTasks((prev) => [...prev, { id: Date.now(), text, completed: false }]);
   };
 
   const handleDeleteTask = (id) => {
-    setTasks(tasks.filter((t) => t.id !== id));
+    setTasks((prev) => prev.filter((t) => t.id !== id));
   };
 
   const handleToggleTask = (id) => {
-    setTasks(
-      tasks.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
-    );
+    setTasks((prevTasks) => {
+      const updated = prevTasks.map((t) =>
+        t.id === id ? { ...t, completed: !t.completed } : t
+      );
+
+      updated.sort((a, b) => {
+        if (a.completed === b.completed) return 0;
+        return a.completed ? 1 : -1;
+      });
+
+      return updated;
+    });
+  };
+
+  const handleCompleteAll = () => {
+    setTasks((prev) => prev.map((t) => ({ ...t, completed: true })));
+  };
+
+  const handleClearAll = () => {
+    setTasks([]);
   };
 
   const totalTasks = tasks.length;
@@ -89,6 +106,11 @@ function App() {
           onDeleteTask={handleDeleteTask}
           onToggleTask={handleToggleTask}
         />
+
+        <div className="bulk-actions-bottom">
+          <button onClick={handleCompleteAll}>Completar todas</button>
+          <button onClick={handleClearAll}>Eliminar todas</button>
+        </div>
       </div>
     </div>
   );
