@@ -1,9 +1,13 @@
 import { useState } from "react";
 
-function AddTask({ onAddTask }) {
+interface AddTaskProps {
+  onAddTask: (task: string) => void;
+}
+
+function AddTask({ onAddTask }: AddTaskProps) {
   const [text, setText] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     const trimmed = text.trim();

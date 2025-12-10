@@ -1,4 +1,16 @@
-function TaskItem({ task, onDelete, onToggle }) {
+interface Task {
+  id: number;
+  text: string;
+  completed: boolean;
+}
+
+interface TaskItemProps {
+  task: Task;
+  onDelete: (id: number) => void;
+  onToggle: (id: number) => void;
+}
+
+function TaskItem({ task, onDelete, onToggle }: TaskItemProps) {
   return (
     <li className="task-item">
       <div className="task-content">

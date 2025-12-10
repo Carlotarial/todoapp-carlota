@@ -1,6 +1,18 @@
 import TaskItem from "./TaskItem";
 
-function TaskList({ tasks, onDeleteTask, onToggleTask }) {
+type Task = {
+  id: number;
+  text: string;
+  completed: boolean;
+};
+
+interface TaskListProps {
+  tasks: Task[];
+  onDeleteTask: (id: number) => void;
+  onToggleTask: (id: number) => void;
+}
+
+function TaskList({ tasks, onDeleteTask, onToggleTask }: TaskListProps) {
   if (tasks.length === 0) {
     return <p className="empty">No hay tareas aún.</p>;
   }
